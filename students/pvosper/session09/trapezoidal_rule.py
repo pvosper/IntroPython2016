@@ -40,10 +40,12 @@ def trapz(fun, a, b):
         l.append(a + (value * increment))
         # print(value, ':', a + (value * increment))
     sum = 0
-    for entry in l:
+    sum += fun(l[0])
+    sum += fun(l[-1])
+    for entry in l[1:-1]:
 #         print('{:.2f}: {:.2f}'.format(entry, fun(entry)))
         sum += 2 * fun(entry)
-    return ((b - a) / 2 * samples) * sum
+    return ((b - a) / (2 * samples)) * sum
     
 if __name__ == "__main__":
 

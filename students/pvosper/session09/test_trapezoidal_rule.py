@@ -5,12 +5,14 @@ Test code for trapezoidal_rule.py
 
 '''
 
+from trapezoidal_rule import trapz
 
-def line(x):
-    '''a very simple straight horizontal line at y = 5'''
-    return 5
+def test_line():
 
-area = trapz(line, 0, 10)
+    def line(x):
+        '''a very simple straight horizontal line at y = 5'''
+        return 5
 
-area
-50
+    area = trapz(line, 0, 10)
+
+    assert area == 50
