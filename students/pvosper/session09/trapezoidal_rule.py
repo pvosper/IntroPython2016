@@ -31,30 +31,18 @@ def trapz(fun, a, b):
     '''
     
     samples = 100
-#     a = 3
-#     b = 15
+    
+    # Create list of values
     increment = (b - a) / samples
-    # print('Increment: ', increment)
     l = []
     for value in range(samples + 1):
         l.append(a + (value * increment))
-        # print(value, ':', a + (value * increment))
+        
+    # Compute function for each value
     sum = 0
-    sum += fun(l[0])
-    sum += fun(l[-1])
+    sum += fun(l[0]) + fun(l[-1])
     for entry in l[1:-1]:
-#         print('{:.2f}: {:.2f}'.format(entry, fun(entry)))
         sum += 2 * fun(entry)
+        
+    # Return results
     return ((b - a) / (2 * samples)) * sum
-    
-if __name__ == "__main__":
-
-    print('__main__')
-
-    def line(x):
-        '''a very simple straight horizontal line at y = 5'''
-        return 5
-
-    area = trapz(line, 0, 10)
-
-    print(area)
