@@ -33,10 +33,12 @@ def trapz(fun, a, b):
     samples = 100
     
     # Create list of values
+    # $ToDo: Use list comprehensions
     increment = (b - a) / samples
-    l = []
-    for value in range(samples + 1):
-        l.append(a + (value * increment))
+    l = [a + (value * increment) for value in range(samples + 1)]
+#     l = []
+#     for value in range(samples + 1):
+#         l.append(a + (value * increment))
         
     # Compute function for each value
     sum = (fun(l[0]) + fun(l[-1])) / 2
