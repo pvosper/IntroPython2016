@@ -39,10 +39,9 @@ def trapz(fun, a, b):
         l.append(a + (value * increment))
         
     # Compute function for each value
-    sum = 0
-    sum += fun(l[0]) + fun(l[-1])
+    sum = (fun(l[0]) + fun(l[-1])) / 2
     for entry in l[1:-1]:
-        sum += 2 * fun(entry)
+        sum += fun(entry)
         
     # Return results
-    return ((b - a) / (2 * samples)) * sum
+    return increment * sum
