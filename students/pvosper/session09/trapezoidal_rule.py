@@ -39,6 +39,8 @@ def trapz(fun, a, b, *args, **kwargs):
     samples = 100
     
     # Create list of values
+    # CHB: delta = (float(b) - a) / n
+    #   ...still doesn't fix type error below
     increment = (b - a) / samples
     l = [a + (value * increment) for value in range(samples + 1)]
         
