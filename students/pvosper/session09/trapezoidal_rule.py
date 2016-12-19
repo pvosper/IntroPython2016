@@ -15,7 +15,7 @@ and end points to compute, and return the area under the curve.
 '''
 
 
-def trapz(fun, a, b):
+def trapz(fun, a, b, *args, **kwargs):
     '''
     Compute the area under the curve defined by
     y = fun(x), for x between a and b
@@ -28,22 +28,26 @@ def trapz(fun, a, b):
 
     :param b: the end point for the integration
     :type b: a numeric value
+    
+    CHB:
+    s = sum([fun(x, *args, **kwargs) for x in vals[1:-1]])
+    s += (fun(a, *args, **kwargs) + fun(b, *args, **kwargs)) / 2
+    s *= (b-a) / n
+
     '''
     
     samples = 100
     
     # Create list of values
-    # $ToDo: Use list comprehensions
     increment = (b - a) / samples
     l = [a + (value * increment) for value in range(samples + 1)]
-#     l = []
-#     for value in range(samples + 1):
-#         l.append(a + (value * increment))
         
     # Compute function for each value
-    sum = (fun(l[0]) + fun(l[-1])) / 2
+    sum = (fun(l[0], *args, **kwargs) + fun(l[-1], *args, **kwargs)) / 2
+#     sum += sum(fun(entry, *args, **kwargs) for entry in l[1:-1])
+#     TypeError: 'float' object is not callable
     for entry in l[1:-1]:
-        sum += fun(entry)
+        sum += fun(entry, *args, **kwargs)
         
     # Return results
     return increment * sum

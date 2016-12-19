@@ -9,6 +9,8 @@ import math
 
 from trapezoidal_rule import trapz
 
+
+
 def test_line():
 
     def line(x):
@@ -58,5 +60,22 @@ def test_quadratic_b():
     area = trapz(quad_b, 7, 9)
     
     assert math.isclose(area, 3442, rel_tol=0.05)
+
+def test_sine():
+
+    def r_sine(x):
+        '''returns sine'''
+        return  math.sin(x)
+        
+    area = trapz(r_sine, 0, 3.14)
     
+    assert math.isclose(area, 2, rel_tol=0.05)
+
+def test_quadratic():
+
+    def quadratic(x, A=0, B=0, C=0):
+        return A * x**2 + B * x + C
+        
+    area = trapz(quadratic, 3, 5, 1, 2, 3)
     
+    assert math.isclose(area, 54.66, rel_tol=0.05)
