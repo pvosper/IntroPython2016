@@ -38,3 +38,44 @@ Prime numbers:
 Others to try:
     Try x^2, x^3, counting by threes, x^e, counting by minus seven, ... 
 '''
+
+def soti(start = 0, stop = 10, step = 1):
+
+    i = start
+    j = start
+    while i < stop:
+        yield j
+        i += step
+        j += i
+
+def doubler(start = 0, stop = 10, step = 1):
+
+    i = start
+    j = 1
+    while i < stop:
+        yield j
+        i += step
+        j *= 2
+
+def fib(start = 0, stop = 10, step = 1):
+
+# n2 n1 n0
+# -  -  1
+#    n2 n1 n0
+#    -  1  1
+#       n2 n1 n0
+#       1  1  2
+#          n2 n1 n0
+#          1  2  3
+#             n2 n1 n0
+
+    i = start
+    n0 = 1
+    n1 = 1
+    n2 = 0
+    while i < stop:
+        yield n0
+        i += step
+        n0 = n1 + n2
+        n2 = n1
+        n1 = n0
