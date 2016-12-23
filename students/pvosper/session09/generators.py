@@ -36,10 +36,11 @@ Prime numbers:
     2, 3, 5, 7, 11, 13, 17, 19, 23...
 
 Others to try:
-    Try x^2, x^3, counting by threes, x^e, counting by minus seven, ... 
+    Try x^2, x^3, counting by threes, x^e, counting by minus seven, ...
 '''
 
-def soti(start = 0, stop = 10, step = 1):
+
+def soti(start=0, stop=10, step=1):
 
     i = start
     j = start
@@ -48,7 +49,8 @@ def soti(start = 0, stop = 10, step = 1):
         i += step
         j += i
 
-def doubler(start = 0, stop = 10, step = 1):
+
+def doubler(start=0, stop=10, step=1):
 
     i = start
     j = 1
@@ -57,17 +59,8 @@ def doubler(start = 0, stop = 10, step = 1):
         i += step
         j *= 2
 
-def fib(start = 0, stop = 10, step = 1):
 
-# n2 n1 n0
-# -  -  1
-#    n2 n1 n0
-#    -  1  1
-#       n2 n1 n0
-#       1  1  2
-#          n2 n1 n0
-#          1  2  3
-#             n2 n1 n0
+def fib(start=0, stop=10, step=1):
 
     i = start
     n0 = 1
@@ -79,3 +72,21 @@ def fib(start = 0, stop = 10, step = 1):
         n0 = n1 + n2
         n2 = n1
         n1 = n0
+
+
+def prime(start=0, stop=10, step=1):
+
+    def test_prime(num):
+        for i in range(2, num):
+            if num % i == 0:
+                return False
+        return True
+
+    i = start
+    prime = 2
+    while i < stop:
+        yield prime
+        i += step
+        prime += 1
+        while test_prime(prime) is False:
+            prime += 1

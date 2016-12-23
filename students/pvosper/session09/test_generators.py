@@ -63,15 +63,15 @@ def test_fib():
     assert next(g) == 21
 
 
-# def test_prime():
-#     g = gen.prime()
-# 
-#     assert next(g) == 2
-#     assert next(g) == 3
-#     assert next(g) == 5
-#     assert next(g) == 7
-#     assert next(g) == 11
-#     assert next(g) == 13
-#     assert next(g) == 17
-#     assert next(g) == 19
-#     assert next(g) == 23
+def test_prime():
+    g = gen.prime()
+
+    assert next(g) == 2
+    assert next(g) == 3
+    assert next(g) == 5
+    assert next(g) == 7
+    assert next(g) == 11
+    assert next(g) == 13
+    assert next(g) == 17
+    assert next(g) == 19
+    assert next(g) == 23
